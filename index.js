@@ -3,10 +3,11 @@ const routes = require("./src/routes");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+require("dotenv").config({ path: ".env" });
 
 // conectar mongo
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/crm_restapi", {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -19,10 +20,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // definir un dominio(s) para recibir las peticiones
-const whitelist = ["http://localhost:3001"];
+const whitelist = [process.env.FRONTEND_URL];
 const corsOptions = {
   origin: (origin, callback) => {
-    console.log(origin);
+    // console.log(origin);
     //  revisar si la peticion viene de un servidor que esta en whitelist
     const existe = whitelist.some((dominio) => dominio === origin);
     if (existe) {
