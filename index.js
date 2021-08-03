@@ -2,6 +2,7 @@ const express = require("express");
 const routes = require("./src/routes");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 // conectar mongo
 mongoose.Promise = global.Promise;
@@ -17,8 +18,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// habilitar cors
+app.use(cors());
+
 // Rutas de la app
 app.use("/", routes());
+
+//carpeta publica
+app.use(express.static("src/uploads"));
 
 // Puerto
 app.listen(5000, () => {

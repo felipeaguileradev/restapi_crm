@@ -10,7 +10,7 @@ exports.nuevoCliente = async (req, res, next) => {
       mensaje: "Se agrego un nuevo cliente",
     });
   } catch (error) {
-    console.log(error);
+    res.send(error);
     next(); //pasamos al siguiente middleware
   }
 };
@@ -49,7 +49,7 @@ exports.actualizarCliente = async (req, res, next) => {
 
     res.json(cliente);
   } catch (error) {
-    console.log(error);
+    res.send(error);
     next();
   }
 };
