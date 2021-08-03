@@ -1,0 +1,4 @@
+{"_id":{"$oid":"6100ba804fcf672958baab01"},"nombre":"Camisa Angular","precio":50,"imagen":"gHk5b7R9L.jpeg","__v":0}
+{"_id":{"$oid":"6104c434117eb53128b86d48"},"nombre":"Camisa SASS","precio":30,"imagen":"sECMilsNe.jpeg","__v":0}
+{"_id":{"$oid":"6104c51d117eb53128b86d4b"},"nombre":"HTML 5","precio":25,"imagen":"QFLphPzAy.jpeg","__v":0}
+{"_id":{"$oid":"6104c596117eb53128b86d4d"},"nombre":"GitHub","precio":20,"imagen":"GOsjUZC-j.jpeg","__v":0}

@@ -43,7 +43,10 @@ app.use("/", routes());
 //carpeta publica
 app.use(express.static("src/uploads"));
 
-// Puerto
-app.listen(5000, () => {
-  console.log("servidor escuchando en el puerto 5000");
+const host = process.env.HOST || "0.0.0.0";
+const port = process.env.PORT || 5000;
+
+// Iniciar App
+app.listen(port, host, () => {
+  console.log("El servidor esta funcionando");
 });
