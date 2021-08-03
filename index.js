@@ -18,8 +18,23 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// definir un dominio(s) para recibir las peticiones
+const whitelist = ["http://localhost:3001"];
+const corsOptions = {
+  origin: (origin, callback) => {
+    console.log(origin);
+    //  revisar si la peticion viene de un servidor que esta en whitelist
+    const existe = whitelist.some((dominio) => dominio === origin);
+    if (existe) {
+      callback(null, true);
+    } else {
+      callback(new Error("No permitido por CORS"));
+    }
+  },
+};
+
 // habilitar cors
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Rutas de la app
 app.use("/", routes());
